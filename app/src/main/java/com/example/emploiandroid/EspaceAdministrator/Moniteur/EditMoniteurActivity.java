@@ -20,6 +20,7 @@ import com.auth0.android.jwt.JWT;
 
 import com.example.emploiandroid.Models.Personne;
 
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.Models.VolleySingleton;
 import com.example.emploiandroid.R;
 
@@ -39,13 +40,14 @@ public class EditMoniteurActivity extends AppCompatActivity {
     private Button btnUpdate;
     private JWT jwt;
     private int idMoniteur;
+    private URLs urLs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_moniteur);
 
         jwt = (JWT) getIntent().getParcelableExtra("jwt");
-
+        urLs = new URLs();
         txtNom = findViewById(R.id.txtName); //TODO:DELETE txtNom form string file
 
         txtPrenom = findViewById(R.id.txtprenom);
@@ -72,7 +74,7 @@ public class EditMoniteurActivity extends AppCompatActivity {
 
     private void UpdateMoniteur() {
 
-        URL_BASE  = "http://192.168.1.13:8000/api/personnes/"+idMoniteur;
+        URL_BASE  =urLs.URL_BASE_PERSONNE +idMoniteur;
 
         try {
             JSONObject jsonBody = new JSONObject();
@@ -95,7 +97,7 @@ public class EditMoniteurActivity extends AppCompatActivity {
             jsonBody.put("email", email);
 
 
-            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.PUT, URL_BASE, jsonBody, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.PUT, URL_BASE.trim(), jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
 

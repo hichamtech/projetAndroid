@@ -136,7 +136,7 @@
     <string name="nom" />
     <string name="Nom">Nom</string>
     <string name="modifier">Modifier</string>
-    <string name="ajouter_un_moniteur">Ajouter un moniteir</string>
+    <string name="ajouter_un_moniteur">Ajouter un moniteur</string>
     <string name="liste_des_moniteurs">Liste des moniteurs</string>
     <string name="ajouter_client">Ajouter client</string>
     <string name="liste_des_clients">Liste des Clients</string>
@@ -145,4 +145,6 @@
     <string name="mot_de_passe">Mot de Passe</string>
     <string name="Bonjour">Bonjour</string>
     <string name="info_client">Info client</string>
+    <string name="detail_seance">Detail</string>
+    <string name="retour">Retour</string>
 </resources>

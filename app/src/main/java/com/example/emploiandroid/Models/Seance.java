@@ -1,8 +1,9 @@
 package com.example.emploiandroid.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Seance {
+public class Seance implements Serializable {
     private  int id;
     private Date DateDebut;
     private Date DateFin;

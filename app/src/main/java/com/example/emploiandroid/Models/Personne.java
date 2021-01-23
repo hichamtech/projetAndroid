@@ -1,8 +1,9 @@
 package com.example.emploiandroid.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Personne  {
+public class Personne  implements Serializable {
 
     private  int id;
     private String nom,prenom,cin,adresse, numTelephone,email,roles,password,token,status;

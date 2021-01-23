@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.emploiandroid.Models.Seance;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.R;
 import com.skyhope.eventcalenderlibrary.CalenderEvent;
 import com.skyhope.eventcalenderlibrary.listener.CalenderDayClickListener;
@@ -42,13 +43,13 @@ import java.util.TimeZone;
 public class CalendarActivity extends AppCompatActivity {
     private static final String DEBUGTAG = CalendarActivity.class.getCanonicalName();
     private static String URL_BASE = "http://192.168.1.13:8000/api/seances";
-    ArrayList<Seance> dataModelArrayList;
+    private ArrayList<Seance> dataModelArrayList;
     private ListAdapterSeance listAdapter;
     private ListView listView;
     private Seance seances;
-    JSONObject dataobj;
-    JSONArray dataArray;
-
+    private  JSONObject dataobj;
+    private JSONArray dataArray;
+    private URLs urls;
     CalenderEvent calenderEvent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,11 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
        calenderEvent = findViewById(R.id.calender_event);
         listView = findViewById(R.id.lvSeance);
-
+        urls = new URLs();
         Calendar calendar = Calendar.getInstance();
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urls.URL_LISTESEANCE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

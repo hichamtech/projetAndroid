@@ -28,6 +28,7 @@ import com.example.emploiandroid.EspaceAdministrator.Moniteur.AddMoniteurFormAct
 import com.example.emploiandroid.EspaceAdministrator.Moniteur.DetailMoniteurActivity;
 import com.example.emploiandroid.EspaceAdministrator.ListAdapter;
 import com.example.emploiandroid.Models.Personne;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.R;
 
 import org.json.JSONArray;
@@ -48,16 +49,16 @@ public class ListMoniteurActivity extends AppCompatActivity {
     private static String URL_BASE = "http://192.168.1.13:8000/api/personnes?roles=ROLE_MONITEUR";
     private static ProgressDialog mProgressDialog;
     private ListView listView;
-    ArrayList<Personne> dataModelArrayList;
+    private  ArrayList<Personne> dataModelArrayList;
     private ListAdapter listAdapter;
-    Personne moniteur;
-    Button btnAddMoniteur;
+    private Personne moniteur;
+    private Button btnAddMoniteur;
     int lockClikedItemIndex;
-    JSONArray dataArray;
+    private  JSONArray dataArray;
     private static  final  int EDIT = 0,DElETE=1, DETAIL =2;
-    JSONObject dataobj;
+    private JSONObject dataobj;
     int idMoniteur;
-
+    private URLs urLs;
     //TO SEND DATA to the OTHERS ACTIVITY SEE FUNCTION ItemLongClick
     private String nom,prenom,email,cin,adresse,tele;
     private Date dateN;
@@ -66,7 +67,7 @@ public class ListMoniteurActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_moniteur);
-
+        urLs = new URLs();
         listView = findViewById(R.id.lv);
         btnAddMoniteur = findViewById(R.id.btnAddMoniteur);
         registerForContextMenu(listView);
@@ -142,7 +143,7 @@ public class ListMoniteurActivity extends AppCompatActivity {
     //Function To GET the lisaddNotet of Moniteur
     private void getListMoniteurs(){
         AfficherProgressDialog(this, "Chargement..","Recherche Moniteur",false);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urLs.URL_LISTEMONITEUR,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -209,8 +210,8 @@ public class ListMoniteurActivity extends AppCompatActivity {
     public void DeleteMoniteur(int idMoniteur){
 
 
-        String url = "http://192.168.1.12:8000/api/personnes/"+idMoniteur;
-        StringRequest dr = new StringRequest(Request.Method.DELETE, url,
+        String url = urLs.URL_BASE_PERSONNE+idMoniteur;
+        StringRequest dr = new StringRequest(Request.Method.DELETE, url.trim(),
                 new Response.Listener<String>()
                 {
                     @Override

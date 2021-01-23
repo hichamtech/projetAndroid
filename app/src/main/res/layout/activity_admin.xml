@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
-            android:text="Bonjour text a emplace.."
+            android:text="Bonjour text a remplace.."
             android:textAlignment="center"
             android:textColor="@color/white" />
     </LinearLayout>

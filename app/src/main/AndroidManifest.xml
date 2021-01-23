@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EspaceClient.ProfileClientActivity"></activity>
-        <activity android:name=".EspaceMoniteur.ProfileMonitorActivity" />
+        <activity android:name=".EspaceAdministrator.Seance.DetailSeanceActivity"
 
-        <activity android:name=".EspaceAdministrator.Seance.AgendaCalandarView"></activity>
+
+            ></activity>
+        <activity android:name=".EspaceClient.ProfileClientActivity" />
+        <activity android:name=".EspaceMoniteur.ProfileMonitorActivity" />
+        <activity android:name=".EspaceAdministrator.Seance.AgendaCalandarView" />
         <activity android:name=".EspaceAdministrator.Seance.CalendarActivity" />
         <activity android:name=".EspaceAdministrator.ProfileActivity" />
         <activity android:name=".EspaceMoniteur.MoniteurActivity" />

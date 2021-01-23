@@ -33,7 +33,7 @@ public class SharedPrefManager {
     public void userLogin(LoginModel user) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_ID, user.getId());
+       // editor.putInt(KEY_ID, user.getId());
         editor.putString(KEY_EMAIL, user.getEmail());
         editor.putString(KEY_ROLE, user.getRole());
         editor.putString(KEY_TOKEN, user.getToken());

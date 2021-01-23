@@ -23,6 +23,7 @@ import com.example.emploiandroid.EspaceClient.ClientActivity;
 import com.example.emploiandroid.EspaceMoniteur.MoniteurActivity;
 import com.example.emploiandroid.Models.LoginModel;
 import com.example.emploiandroid.Models.SharedPrefManager;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.Models.VolleySingleton;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,10 +44,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText username,password ;
     Button btnLogin;
     String role;
+    URLs urLs;
+
     //END DECLARATION
 
     //RECYCLE METHODS
     protected void onCreate(Bundle savedInstanceState) {
+        urLs = new URLs();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
@@ -131,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
             params.put("password", pass);
 
             JsonObjectRequest loginForm = new JsonObjectRequest(com.android.volley.Request.Method.POST,
-                    URL_BASE, new JSONObject(params),
+                    urLs.URL_LOGIN, new JSONObject(params),
                     new Response.Listener<JSONObject>() {
 
                         @Override

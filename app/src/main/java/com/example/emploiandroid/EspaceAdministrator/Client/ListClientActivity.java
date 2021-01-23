@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.emploiandroid.EspaceAdministrator.ListAdapter;
 import com.example.emploiandroid.Models.Personne;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.R;
 
 import org.json.JSONArray;
@@ -49,6 +50,7 @@ public class ListClientActivity extends AppCompatActivity {
     Button btnAddClient;
     int lockClikedItemIndex;
     JSONArray dataArray;
+    private URLs urLs;
     private static  final  int EDIT = 0,DElETE=1, DETAIL =2;
     JSONObject dataobj;
     int idclient;
@@ -65,6 +67,7 @@ public class ListClientActivity extends AppCompatActivity {
         listView = findViewById(R.id.lv);
         btnAddClient = findViewById(R.id.btnAddClient);
         registerForContextMenu(listView);
+        urLs = new URLs();
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -135,8 +138,8 @@ public class ListClientActivity extends AppCompatActivity {
     //CRUD CLIENT
     //Function To the list of Client
     private void getListClients(){
-        AfficherProgressDialog(this, "Chargement..","Recherch client",false);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE,
+        AfficherProgressDialog(this, "Chargement..","Recherche client",false);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, urLs.URL_LISTECLIENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -200,8 +203,8 @@ public class ListClientActivity extends AppCompatActivity {
     //Function To Delete Client
     public void DeleteClient(int idClient){
 
-        String url = "http://192.168.1.13:8000/api/personnes/"+idClient;
-        StringRequest dr = new StringRequest(Request.Method.DELETE, url,
+        String url = urLs.URL_BASE_PERSONNE+idClient;
+        StringRequest dr = new StringRequest(Request.Method.DELETE, url.trim(),
                 new Response.Listener<String>()
                 {
                     @Override

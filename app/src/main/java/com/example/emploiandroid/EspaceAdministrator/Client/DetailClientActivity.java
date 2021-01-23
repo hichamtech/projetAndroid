@@ -22,6 +22,7 @@ import com.example.emploiandroid.EspaceAdministrator.ListAdapter;
 import com.example.emploiandroid.EspaceAdministrator.Seance.ListAdapterSeance;
 import com.example.emploiandroid.Models.Personne;
 import com.example.emploiandroid.Models.Seance;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.R;
 
 import org.json.JSONArray;
@@ -37,22 +38,19 @@ import java.util.Objects;
 public class DetailClientActivity extends AppCompatActivity {
 
     private static final String DEBUGTAG = DetailClientActivity.class.getCanonicalName();
-    ArrayList<Seance> dataModelArrayList;
+    private ArrayList<Seance> dataModelArrayList;
     private ListView listView;
-
-    TextView txtId,txtNom,txtPrenom,txtCin,txtTel,txtAdresse,txtEmail;
-    Intent intent;
-    JSONArray dataArray;
-    Personne client;
-    JSONObject dataobj;
-    Seance seances;
+    private TextView txtId,txtNom,txtPrenom,txtCin,txtTel,txtAdresse,txtEmail;
+    private Intent intent;
+    private JSONArray dataArray;
+    private Personne client;
+    private JSONObject dataobj;
+    private Seance seances;
     private ListAdapterSeance listAdapter;
-
-
     private int idClient;
-
     private static String URL_BASE;
     private static String URL_BASE_SEANCE;
+    private URLs urLs;
 
     //Start RCYCLE METHODS
 
@@ -61,7 +59,7 @@ public class DetailClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_client);
 
-
+        urLs = new URLs();
         txtId = findViewById(R.id.txtid);
         txtNom = findViewById(R.id.txtNom);
         txtPrenom = findViewById(R.id.txtPrenom);
@@ -121,9 +119,9 @@ public class DetailClientActivity extends AppCompatActivity {
 
     private void getDetailClient() {
         //  AfficherProgressDialog(this, "Chargement..","Recherch client",false);
-        URL_BASE = "http://192.168.1.13:8000/api/personnes/" + idClient;
+        URL_BASE = urLs.URL_BASE_PERSONNE+idClient;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE.trim(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -178,9 +176,9 @@ public class DetailClientActivity extends AppCompatActivity {
 
 
     private void getSeanceClient() {
-        URL_BASE_SEANCE = "http://192.168.1.13:8000/api/personnes/" + idClient + "/seances";
+        URL_BASE_SEANCE = urLs.URL_BASE_PERSONNE+idClient+"/seances";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE_SEANCE,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_BASE_SEANCE.trim(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

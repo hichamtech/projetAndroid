@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.auth0.android.jwt.JWT;
 import com.example.emploiandroid.Models.Personne;
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.Models.VolleySingleton;
 import com.example.emploiandroid.R;
 
@@ -37,21 +38,20 @@ public class AddMoniteurFormActivity extends AppCompatActivity {
 
     private EditText txtNom, txtPrenom, txtCin, txtAdresse, txtTele, txtEmail, txtPassword, txtDateN;
     private static String URL_BASE = "http://192.168.1.13:8000/api/personnes";
-
     private DatePicker datePicker;
     private Calendar calendar;
     private Button btnAdd;
     private Personne moniteur;
     private int year, month, day;
-
     private JWT jwt;
+    private URLs urLs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_moniteur_form);
 
         jwt = (JWT) getIntent().getParcelableExtra("jwt");
-
+        urLs = new URLs();
         txtNom = findViewById(R.id.txtName); //TODO:DELETE txtNom form string file
         txtPrenom = findViewById(R.id.txtprenom);
         txtCin = findViewById(R.id.txtcin);
@@ -131,7 +131,7 @@ public class AddMoniteurFormActivity extends AppCompatActivity {
             jsonBody.put("roles", roles);
 
 
-            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, URL_BASE, jsonBody, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, urLs.URL_BASE_PERSONNE.trim(), jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
 

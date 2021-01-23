@@ -20,6 +20,7 @@ import com.auth0.android.jwt.JWT;
 import com.example.emploiandroid.EspaceAdministrator.AdminActivity;
 import com.example.emploiandroid.Models.Personne;
 
+import com.example.emploiandroid.Models.URLs;
 import com.example.emploiandroid.R;
 import com.example.emploiandroid.Models.VolleySingleton;
 
@@ -41,13 +42,14 @@ public class EditClientFormActivity extends AppCompatActivity {
     private JWT jwt;
 
     private int idClient;
+    private URLs urLs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_client_form);
         jwt = (JWT) getIntent().getParcelableExtra("jwt");
         txtNom = findViewById(R.id.txtName); //TODO:DELETE txtNom form string file
-
+        urLs = new URLs();
         txtPrenom = findViewById(R.id.txtprenom);
         txtCin = findViewById(R.id.txtcin);
         txtAdresse = findViewById(R.id.txtadresse);
@@ -68,7 +70,7 @@ public class EditClientFormActivity extends AppCompatActivity {
 
     private void UpdateClient() {
 
-      URL_BASE  = "http://192.168.1.13:8000/api/personnes/"+idClient;
+      URL_BASE  = urLs.URL_BASE_PERSONNE+idClient;
 
 
             try {
@@ -89,7 +91,7 @@ public class EditClientFormActivity extends AppCompatActivity {
                 jsonBody.put("NumTelephone", tele);
                 jsonBody.put("email", email);
 
-                JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.PUT, URL_BASE, jsonBody, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.PUT, URL_BASE.trim(), jsonBody, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(DEBUGTAG,response.toString());

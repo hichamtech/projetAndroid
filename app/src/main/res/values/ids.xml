@@ -28,4 +28,8 @@
     <item name="txtprenom" type="id" />
     <item name="txtadresse" type="id" />
     <item name="Title" type="id" />
+    <item name="lblDateDebut" type="id" />
+    <item name="lblDateFin" type="id" />
+    <item name="lblnbrR" type="id" />
+    <item name="titleDetail" type="id" />
 </resources>
