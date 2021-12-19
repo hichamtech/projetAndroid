@@ -39,7 +39,7 @@ import java.util.Date;
 
 public class ListClientActivity extends AppCompatActivity {
     private static final String DEBUGTAG = ListClientActivity.class.getCanonicalName();
-    private static String URL_BASE = "http://192.168.1.12:8000/api/personnes?roles=ROLE_CLIENT";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/personnes?roles=ROLE_CLIENT";
     private static ProgressDialog mProgressDialog;
     private ListView listView;
     ArrayList<Personne> dataModelArrayList;

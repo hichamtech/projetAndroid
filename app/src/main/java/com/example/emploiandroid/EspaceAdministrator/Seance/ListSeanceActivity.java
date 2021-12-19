@@ -39,7 +39,7 @@ import java.util.List;
 
 public class ListSeanceActivity extends AppCompatActivity implements WeekView.EventClickListener,WeekView.EmptyViewClickListener, MonthLoader.MonthChangeListener {
     private static final String DEBUGTAG = ListSeanceActivity.class.getCanonicalName();
-    private static String URL_BASE = "http://192.168.1.12:8000/api/seances";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/seances";
     ArrayList<Seance> dataModelArrayList = new ArrayList<Seance>();
     Calendar clickedTime;
       WeekView mWeekView;

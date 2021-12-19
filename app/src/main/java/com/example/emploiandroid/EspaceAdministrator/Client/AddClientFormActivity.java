@@ -31,7 +31,7 @@ public class AddClientFormActivity extends AppCompatActivity {
     private static final String DEBUGTAG = AddClientFormActivity.class.getCanonicalName();
 
     private EditText txtNom, txtPrenom, txtCin, txtAdresse, txtTele, txtEmail, txtPassword, txtDateN;
-    private static String URL_BASE = "http://192.168.1.12:8000/api/personnes";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/personnes";
 
     private Calendar calendar;
     private Button btnAdd;

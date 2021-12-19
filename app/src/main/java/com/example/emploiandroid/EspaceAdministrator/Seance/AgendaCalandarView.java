@@ -47,7 +47,7 @@ public class AgendaCalandarView extends AppCompatActivity {
 
     AgendaCalendarView mAgendaCalendarView;
     private static final String DEBUGTAG = CalendarActivity.class.getCanonicalName();
-    private static String URL_BASE = "http://192.168.1.12:8000/api/seances";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/seances";
     ArrayList<Seance> dataModelArrayList=null;
     private ListAdapterSeance listAdapter;
     private ListView listView;

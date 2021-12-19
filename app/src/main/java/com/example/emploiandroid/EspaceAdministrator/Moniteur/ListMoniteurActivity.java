@@ -44,7 +44,7 @@ public class ListMoniteurActivity extends AppCompatActivity {
 
 
     private static final String DEBUGTAG = ListMoniteurActivity.class.getCanonicalName();
-    private static String URL_BASE = "http://192.168.1.12:8000/api/personnes?roles=ROLE_MONITEUR";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/personnes?roles=ROLE_MONITEUR";
     private static ProgressDialog mProgressDialog;
     private ListView listView;
     ArrayList<Personne> dataModelArrayList;

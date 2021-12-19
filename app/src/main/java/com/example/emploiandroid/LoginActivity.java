@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //DECLARATION
     private static final String DEBUGTAG = LoginActivity.class.getCanonicalName();
-    private static String URL_BASE = "http://192.168.1.12:8000/api/login_check";
+    private static String URL_BASE = "http://0dddb164b7d5.ngrok.io/api/login_check";
     LoginModel  loginModel;
     EditText username,password ;
     Button btnLogin;
